@@ -1,13 +1,26 @@
-import "./topbar.css";
+import { useState } from "react";
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import axios from "axios"; // Import Axios for making API requests
+
+import "./topbar.css";
 import logo from "../../images/logo.png";
 
 export default function Topbar() {
-  const { user } = useContext(AuthContext);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const user = JSON.parse(localStorage.getItem("user")); // Retrieve user data from local storage
+
+  const handleSearch = async () => {
+    try {
+      const res = await axios.get(`/users/search?username=${searchQuery}`);
+      setSearchResults(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
@@ -22,15 +35,30 @@ export default function Topbar() {
           <input
             placeholder="Search for friend, post or video"
             className="searchInput"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
+          <button className="searchButton" onClick={handleSearch}>
+            Search
+          </button>
         </div>
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-          <span className="topbarLink">Homepage</span>
-          <span className="topbarLink">Timeline</span>
+          {/* Display search results */}
+          {searchResults.map((user) => (
+            <Link key={user._id} to={`/profile/${user.username}`}>
+              <div className="searchResultItem">
+                <img
+                  src={user.profilePicture ? PF + user.profilePicture : PF + "person/noAvatar.png"}
+                  alt=""
+                  className="topbarImg"
+                />
+                <span className="searchResultUsername">{user.username}</span>
+              </div>
+            </Link>
+          ))}
         </div>
-
         <div className="topbarIcons">
           <div className="topbarIconItem">
             <Person />
@@ -47,11 +75,7 @@ export default function Topbar() {
         </div>
         <Link to={`/profile/${user.username}`}>
           <img
-            src={
-              user.profilePicture
-                ? PF + user.profilePicture
-                : PF + "person/noAvatar.png"
-            }
+            src={user.profilePicture ? PF + user.profilePicture : PF + "person/noAvatar.png"}
             alt=""
             className="topbarImg"
           />

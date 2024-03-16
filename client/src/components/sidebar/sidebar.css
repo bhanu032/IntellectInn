@@ -25,7 +25,9 @@
   padding: 10px; /* Add padding to increase clickable area */
   border-radius: 5px; /* Add border-radius for rounded corners */
   transition: background-color 0.3s ease; /* Smooth background color transition */
+  cursor: pointer; /* Add pointer cursor */
 }
+
 
 .sidebarListItem:hover {
   background-color: #f1f1f1; /* Change background color on hover */

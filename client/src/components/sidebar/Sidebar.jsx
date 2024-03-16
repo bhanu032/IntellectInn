@@ -21,14 +21,15 @@ export default function Sidebar() {
     setSelectedItem(itemName);
     if (itemName === "Logout") {
       handleLogout(); // Redirect to logout page
-    } else {
-      history.push(`/${itemName.toLowerCase()}`); // Redirect to the corresponding page
-    }
+    } 
   };
 
   const handleLogout = () => {
+    // Remove user details from local storage
+    localStorage.removeItem("user");
     // Redirect to logout page
-    history.push("/logout");
+    // history.push("/login");
+    window.location.href = "/login";
   };
 
   return (
@@ -62,15 +63,7 @@ export default function Sidebar() {
             <Group className="sidebarIcon" />
             <span className="sidebarListItemText">Groups</span>
           </li>
-          <li
-            className={`sidebarListItem ${
-              selectedItem === "Bookmarks" && "selected"
-            }`}
-            onClick={() => handleItemClick("Bookmarks")}
-          >
-            <Bookmark className="sidebarIcon" />
-            <span className="sidebarListItemText">Bookmarks</span>
-          </li>
+           
           <li
             className={`sidebarListItem ${
               selectedItem === "Questions" && "selected"
@@ -81,14 +74,14 @@ export default function Sidebar() {
             <span className="sidebarListItemText">Questions</span>
           </li>
           <li
-            className={`sidebarListItem ${
-              selectedItem === "Jobs" && "selected"
-            }`}
-            onClick={() => handleItemClick("Jobs")}
-          >
-            <WorkOutline className="sidebarIcon" />
-            <span className="sidebarListItemText">Jobs</span>
-          </li>
+  className={`sidebarListItem ${selectedItem === "mySchool" && "selected"}`}
+  onClick={() => window.location.href = "https://jklu.edu.in/"}
+>
+  <WorkOutline className="sidebarIcon" />
+  <span className="sidebarListItemText">mySchool</span>
+</li>
+
+
           <li
             className={`sidebarListItem ${
               selectedItem === "Events" && "selected"
@@ -99,24 +92,22 @@ export default function Sidebar() {
             <span className="sidebarListItemText">Events</span>
           </li>
           <li
-            className={`sidebarListItem ${
-              selectedItem === "Courses" && "selected"
-            }`}
-            onClick={() => handleItemClick("Courses")}
-          >
-            <School className="sidebarIcon" />
-            <span className="sidebarListItemText">Courses</span>
-          </li>
-          <li
+  className={`sidebarListItem ${selectedItem === "Courses" && "selected"}`}
+  onClick={() => window.location.href = "https://www.coursera.org/"}
+>
+  <School className="sidebarIcon" />
+  <span className="sidebarListItemText">Courses</span>
+</li>
+
           
+          <li
             className={`sidebarListItem ${
               selectedItem === "Logout" && "selected"
             }`}
             onClick={() => handleItemClick("Logout")}
           >
-            <Chat className="sidebarIcon" />
+            <ExitToApp className="sidebarIcon" />
             <span className="sidebarListItemText">Logout</span>
-          
           </li>
         </ul>
       </div>

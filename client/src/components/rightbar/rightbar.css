@@ -1,102 +1,70 @@
+/* rightbar.css */
+
 .rightbar {
-  flex: 3.5;
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
 }
 
 .rightbarWrapper {
-  padding: 20px 20px 0 0;
-}
-
-.birthdayContainer {
-  display: flex;
-  align-items: center;
-}
-
-.birthdayImg {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-}
-
-.birthdayText {
-  font-weight: 300;
-  font-size: 15px;
-}
-
-.rightbarAd {
-  width: 100%;
-  border-radius: 10px;
-  margin: 30px 0;
-}
-
-.rightbarTitle{
-    margin-bottom: 20px;
-}
-
-.rightbarFriendList {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.rightbarTitle{
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-.rightbarInfo{
-  margin-bottom: 30px;
-}
-
-.rightbarInfoItem{
-  margin-bottom: 10px;
-}
-
-.rightbarInfoKey{
-  font-weight: 500;
-  margin-right: 15px;
-  color: #555;
-}
-
-.rightbarInfoValue{
-  font-weight: 300;
-}
-
-.rightbarFollowings{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.rightbarFollowing{
   display: flex;
   flex-direction: column;
+}
+
+.announcementSection {
   margin-bottom: 20px;
-  cursor: pointer;
 }
 
-.rightbarFollowingImg{
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.rightbarFollowButton{
-  margin-top: 30px;
+.rightbarTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
   margin-bottom: 10px;
-  border: none;
-  background-color: #1872f2;
-  color: white;
+}
+
+.announcementContainer {
+  padding: 10px;
+  background-color: #fff;
   border-radius: 5px;
-  padding: 5px 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.announcement {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.announcementInput {
   display: flex;
   align-items: center;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
+  margin-top: 10px;
 }
 
-.rightbarFollowButton:focus{
+.announcementInput input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
   outline: none;
+}
+
+.announcementInput button {
+  padding: 8px 15px;
+  background-color: #1877f2;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.announcementInput button:hover {
+  background-color: #166fe5;
+}
+
+.announcementInput button:active {
+  background-color: #145fad;
 }
